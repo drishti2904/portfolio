@@ -6,8 +6,10 @@ const SpacePortfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  // Add your image URL here
-  const profileImage = "/profile.jpg"; 
+  // Add your local image path here
+  // Place your image in the 'public' folder or 'src/assets' folder
+  const profileImage = "/profile.jpg"; // For public folder: /profile.jpg
+  // Or for assets folder: import profileImage from './assets/profile.jpg' at the top
 
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 2000);
@@ -159,16 +161,20 @@ const SpacePortfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center px-6">
+      <section id="home" className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-12">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-black to-black z-0"></div>
-        <div className="relative z-10 text-center max-w-4xl">
-          <div className="mb-8 inline-block">
-            <div className="w-40 h-40 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 p-1 animate-pulse">
-              <div className="w-full h-full rounded-full overflow-hidden bg-black">
+        <div className="relative z-10 text-center max-w-4xl w-full">
+          <div className="mb-8 flex justify-center">
+            <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 p-1 animate-pulse">
+              <div className="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
                 <img 
                   src={profileImage} 
                   alt="Drishti Porwal" 
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<span class="text-5xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">DP</span>';
+                  }}
                 />
               </div>
             </div>
@@ -181,11 +187,11 @@ const SpacePortfolio = () => {
           </h1>
           
           <p className="text-2xl md:text-3xl text-cyan-400 mb-4 font-light">
-           Aspiring Software Engineer | Full-Stack Developer
+            Software Engineer & Full-Stack Developer
           </p>
           
           <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-            Crafting seamless digital experiences with modern web technologies
+            Building scalable software solutions and crafting seamless digital experiences
           </p>
           
           <div className="flex gap-6 justify-center flex-wrap">
@@ -226,15 +232,29 @@ const SpacePortfolio = () => {
           
           <div className="bg-gradient-to-r from-purple-900/20 to-cyan-900/20 border border-purple-500/30 rounded-2xl p-8 backdrop-blur-sm">
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              I’m an aspiring Software Engineer and passionate Full-Stack Developer pursuing a B.Tech in Computer Science and Engineering at Graphic Era University, graduating in 2026. I specialize in building modern, scalable web applications using React.js, Node.js, and MongoDB.
+              I'm a passionate Software Engineer and Full-Stack Developer pursuing B.Tech in Computer Science at 
+              Graphic Era University. My journey in software engineering encompasses building robust, scalable applications 
+              and solving complex computational problems through elegant code.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              With a strong foundation in data structures, algorithms, and system design, I create scalable and 
-              efficient solutions. I'm particularly interested in real-time applications, cloud technologies, and 
-              creating intuitive user experiences.
+              As a software engineer, I specialize in the complete software development lifecycle—from requirements 
+              analysis and system design to implementation, testing, and deployment. I build modern web applications 
+              using React.js, Node.js, and MongoDB, while maintaining strong software engineering principles like 
+              SOLID, DRY, and clean code architecture.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              With a strong foundation in data structures, algorithms, design patterns, and system design, I create 
+              scalable and efficient solutions that prioritize performance, maintainability, and user experience. 
+              My expertise extends to database design, RESTful API development, version control with Git, and agile 
+              development methodologies.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              I'm particularly interested in distributed systems, real-time applications, cloud technologies, 
+              microservices architecture, and leveraging data analytics to drive intelligent decision-making. 
+              I believe in continuous learning and staying current with emerging technologies and industry best practices.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-6 mt-8">
+            <div className="grid md:grid-cols-3 gap-6 mt-8">
               <div className="text-center p-6 bg-black/50 rounded-xl border border-purple-500/20 hover:border-purple-500/50 transition-all">
                 <Award className="w-12 h-12 mx-auto mb-4 text-purple-400" />
                 <h3 className="text-xl font-semibold text-cyan-400 mb-2">Top 30 Finalist</h3>
@@ -245,6 +265,12 @@ const SpacePortfolio = () => {
                 <Code className="w-12 h-12 mx-auto mb-4 text-purple-400" />
                 <h3 className="text-xl font-semibold text-cyan-400 mb-2">10+ Projects</h3>
                 <p className="text-gray-400 text-sm">Full-Stack Applications</p>
+              </div>
+              
+              <div className="text-center p-6 bg-black/50 rounded-xl border border-purple-500/20 hover:border-purple-500/50 transition-all">
+                <BookOpen className="w-12 h-12 mx-auto mb-4 text-purple-400" />
+                <h3 className="text-xl font-semibold text-cyan-400 mb-2">Problem Solver</h3>
+                <p className="text-gray-400 text-sm">DSA & System Design</p>
               </div>
             </div>
           </div>
